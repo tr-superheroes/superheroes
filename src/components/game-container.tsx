@@ -6,6 +6,8 @@ import { TopCardPC } from "./top-card-pc";
 import { CardStack } from "./card-stack";
 import { MessageContainer } from "./message";
 import { NextTurn } from "./next-turn";
+import backCard from "./../assets/images/card2.png";
+import topCard from "./../assets/images/card3.png";
 
 export const GameContainer:React.FC = () =>{
     //load message container for showing scores/winner for each round
@@ -157,8 +159,8 @@ export const GameContainer:React.FC = () =>{
 
                 <CardStack 
                 cssClassType = "pc"
-                topCardImage = "../public/card3.png"
-                cardBackImage = "../public/card2.png"
+                topCardImage = {topCard}
+                cardBackImage = {backCard}
                 showTopCardData = {showPCCard}
                 stackLength = {cardIndex} /> 
             </div>
@@ -179,8 +181,8 @@ export const GameContainer:React.FC = () =>{
 
                 <CardStack 
                 cssClassType = "player"
-                topCardImage = "/../src/assets/images/card3.png"
-                cardBackImage = "/../src/assets/images/card2.png"
+                topCardImage = {topCard}
+                cardBackImage = {backCard}
                 showTopCardData = {true}
                 stackLength = {cardIndex} /> 
             </div>
