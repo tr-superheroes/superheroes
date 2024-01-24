@@ -188,6 +188,7 @@ const responseData = {
 
 export const handlers = [
   rest.get("http://localhost:8080/api/cards", (req, res, ctx) => {
+    console.log(req);
     return res(ctx.status(200), ctx.json(JSON.stringify(responseData)));
   }),
 ];

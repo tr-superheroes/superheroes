@@ -1,14 +1,14 @@
 import { useState, useEffect, createContext } from "react"
-import { FetchGameResponse} from "../types/game.types";
+import { TrumpCard} from "../types/game.types";
 import { GameContainer } from "./game-container";
 import ShowLoading from "./show-loading";
 import {getCards} from './../../functions/superhero_card_functions';
 import { DEFAULT_NUMBER_OF_CARDS } from "../../helpers/constants";
 
-export const GameContext = createContext<FetchGameResponse>([]);
+export const GameContext = createContext<TrumpCard[] | undefined>([]);
 export const StartGame:React.FC =() =>{
     const [isNewGame,setIsNewGame] = useState(true);
-    const [response,setResponse] = useState<FetchGameResponse | []>();
+    const [response,setResponse] = useState<TrumpCard[] | undefined>();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setError] = useState(false);
 
@@ -17,7 +17,7 @@ export const StartGame:React.FC =() =>{
             setIsLoading(true);
             const data = await getCards(DEFAULT_NUMBER_OF_CARDS);
             //console.log(data);
-            const cards = data as unknown as FetchGameResponse;
+            const cards = data as unknown as TrumpCard[];
             if (cards.length > 0) {
                 setResponse(cards);
             }

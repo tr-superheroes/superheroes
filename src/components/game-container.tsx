@@ -12,8 +12,10 @@ export const GameContainer:React.FC = () =>{
     //keep score in state
     
     const allCardsArray = useContext(GameContext);
-    const playerCardsArray = allCardsArray.slice(0,allCardsArray.length/2); //slice does not include the last index,so no repeats
-    const pcArray = allCardsArray.slice((allCardsArray.length/2),allCardsArray.length);
+    const playerCardsArray = 
+    allCardsArray? allCardsArray.slice(0,allCardsArray.length/2): []; //slice does not include the last index,so no repeats
+    const pcArray = 
+    allCardsArray? allCardsArray.slice((allCardsArray.length/2),allCardsArray.length): [];
 
     //use it like a stack and pop from top to 0, always starting at highest index
     const [cardIndex,setCardIndex] = useState(playerCardsArray.length-1);
