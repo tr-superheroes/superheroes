@@ -157,8 +157,8 @@ export const GameContainer:React.FC = () =>{
 
                 <CardStack 
                 cssClassType = "pc"
-                topCardImage = "/../src/assets/images/card3.png"
-                cardBackImage = "/../src/assets/images/card2.png"
+                topCardImage = "../public/card3.png"
+                cardBackImage = "../public/card2.png"
                 showTopCardData = {showPCCard}
                 stackLength = {cardIndex} /> 
             </div>
