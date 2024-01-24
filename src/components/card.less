@@ -1,0 +1,187 @@
+
+.mixin-loop (@i) when (@i > 0) {
+  &:nth-child(@{i}) {
+    transform: rotate(@i * 2deg);
+      .keyframes(deal-card;{
+            0% { rotate: 0;
+            opacity: 0.8}
+            50% { rotate: @i * -4deg; 
+            opacity: 0.9}
+            100% { rotate: @i * -5deg; 
+                margin-left: -7.5em;
+            opacity: 1 }
+            });
+    .animation(deal-card 0.1s (@i * 0.7s) linear 1 forwards);
+    .animation {
+      animation-timing-function: cubic-bezier(0.2, -2, 0.8, 2);
+    }
+  }
+  .mixin-loop(@i - 1);
+}
+
+.mixin-loop-pc-top (@i) when (@i > 0) {
+  &:nth-child(@{i}) {
+    transform: rotate(@i * 2deg);
+      .keyframes(deal-card-pc-top;{
+            0% { rotate: 0;
+            opacity: 0.8}
+            50% { rotate: @i * -2deg; 
+            opacity: 0.9}
+            100% { rotate: @i * -5deg; 
+                margin-left: -7.5em;
+            opacity: 1 }
+            });
+    .animation(deal-card-pc-top 0.1s 0.4s linear 1 forwards);
+    .animation {
+      animation-timing-function: cubic-bezier(0.2, -2, 0.8, 2);
+    }
+  }
+  .mixin-loop-pc-top(@i - 1);
+}
+
+.mixin-top-layer-player(@i) {
+  transform: rotate(@i* -2deg);
+    .keyframes(top-data-player; {
+              0% { 
+              opacity: 0}
+              70% {opacity: 0;
+              }
+              100% { rotate: 11deg; 
+                  margin-left:  @i * 1.275 - 16em;
+                  width: @i * 0.3 + 16rem;
+              opacity: 1 }
+              });
+
+  .animation(top-data-player 0.5s (5.3 - @i * 0.7s) linear 1 forwards);
+  .animation {
+    animation-timing-function: cubic-bezier(0.2, -2, 0.8, 2);
+  }
+}
+
+.mixin-top-layer-pc(@i) {
+  transform: rotate(@i* -2deg);
+    .keyframes(top-data-pc; {
+              0% { 
+              opacity: 0}
+              50% {opacity: 0
+              }
+              100% { rotate: 11deg; 
+                  margin-left:  @i * 1.275 - 16em;
+                  width: @i * 0.3 + 16rem;
+              opacity: 1}
+              });
+
+  .animation(top-data-pc 0.1s 0.4s linear 1 forwards);
+  .animation {
+    animation-timing-function: cubic-bezier(0.2, -2, 0.8, 2);
+  }
+}
+
+.card {
+  padding: 1rem;
+  border: black solid 1px;
+  box-sizing: border-box;
+  box-shadow: 2px 3px;
+  opacity: 0;
+  width: 18rem;
+  margin: 7rem -12rem;
+
+  &--pc {
+    background-color: lightgreen;
+    .mixin-loop(7);
+  }
+
+  &--player {
+    background-color: lightblue;
+    .mixin-loop(7);
+  }
+}
+
+.top {
+  padding: 1rem;
+  border: black solid 2px;
+  box-shadow: 2px 2px black, 5px 5px orange;
+  box-sizing: border-box;
+  opacity: 0;
+  width: 18rem;
+  margin: 7rem 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  &__data {
+    &--player {
+      background-color: red;
+      .mixin-loop(7);
+    }
+    &--pc {
+      background-color: yellow;
+      .mixin-loop-pc-top(7);
+    }
+  }
+}
+
+.hero {
+  padding: 2rem;
+  width: 18rem;
+  box-sizing: border-box;
+  opacity: 0;
+  background-color: transparent;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+
+  &__header {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__img {
+    width: 12vh;
+    margin: 0 auto;
+    border: white solid 3px;
+  }
+
+  &__powerstats {
+    list-style-type: disc;
+    margin: auto -10%;
+    color: yellow;
+    font-size: 1.3rem;
+  }
+
+  &__form {
+    background-color: transparent;
+    color: yellow;
+    font-size: 1.3rem;
+  }
+
+  &__button {
+    background-color: red;
+    border: black solid 1px;
+    color: white;
+    padding: 0.5rem;
+    text-decoration: none;
+    margin: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: "Bangers";
+  }
+}
+
+
+each(range(7), {
+  .hero--player@{value} {
+    margin-right: @value * -1.5rem;
+    .mixin-top-layer-player(@value);
+}
+});
+
+each(range(7), {
+  .hero--pc@{value} {
+    margin-right: @value * -1.5rem;
+    .mixin-top-layer-pc(@value);
+}
+});
