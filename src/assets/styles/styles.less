@@ -118,7 +118,7 @@ h2, h3 {
   background-size: contain;
   height: 100vw;
   background-repeat: no-repeat;
-  z-index: 3000;
+  z-index: 2500;
   opacity: 0;
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
@@ -137,7 +137,7 @@ h2, h3 {
     background-image: url("../images/yellow-bubble.png");
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 992px) {
     width: 30%;
     margin: auto 35% auto 35%;
     position: fixed;
@@ -155,12 +155,12 @@ h2, h3 {
         align-items: center;
         text-align: center;
 
-        @media (min-width: 600px) {
+        @media (min-width: 992px) {
           margin: 29% 40% 30% 25%;
         }
   
         &--main {
-          font-size: 6vw;
+          font-size: 5vw;
           color: #6e1919;
           font-family: "Bangers";
           margin: 0;
@@ -168,7 +168,7 @@ h2, h3 {
           text-align: center;
           width: 30vw;
 
-          @media (min-width: 600px) {
+          @media (min-width: 992px) {
             width: 10vw;
             font-size: 1.5vw;
           }
@@ -223,10 +223,15 @@ h2, h3 {
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
       animation-delay: 1s;
+      width: 50vw;
+      left: 15%;
+      position: fixed;
+      bottom: 40vh;
       @media (min-width: 600px) {
-        width: 20vw;
+        width: 15vw;
         left: 37vw;
         position: fixed;
+        bottom: 0;
       }  
     }
   }
